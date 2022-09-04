@@ -7,16 +7,6 @@ const _saveLocalTime = function _locTime(e) {
 };
 
 player.on('timeupdate', throttle(_saveLocalTime, 2000));
-let currentTime = localStorage.getItem('videoplayer-current-time', 0);
-startValueTime();
+let currentTime = localStorage.getItem('videoplayer-current-time');
 
-player.setCurrentTime(currentTime).then(function () {
-  localStorage.setItem('videoplayer-current-time', 0);
-});
-
-player.getVideoTitle().then(function (title) {
-  console.log('title:', title);
-});
-function startValueTime() {
-  localStorage.setItem('videoplayer-current-time', 0);
-}
+player.setCurrentTime(currentTime);

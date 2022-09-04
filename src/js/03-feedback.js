@@ -15,8 +15,9 @@ function slowTextTime() {
 
 function autoLookText() {
   const saveText = localStorage.getItem('feedback-form-state');
-  const parseText = JSON.parse(saveText);
+
   if (saveText) {
+    const parseText = JSON.parse(saveText);
     input.value = parseText.email;
     text.value = parseText.message;
   }
@@ -26,11 +27,9 @@ form.addEventListener('submit', onSubmitForm);
 
 function onSubmitForm(e) {
   e.preventDefault();
-  const inputEmail = e.currentTarget.elements.email.value;
-  const area = text.value;
   const obj = {
-    email: inputEmail,
-    message: area,
+    email: input.value,
+    message: text.value,
   };
   console.log(obj);
   localStorage.removeItem('feedback-form-state');
